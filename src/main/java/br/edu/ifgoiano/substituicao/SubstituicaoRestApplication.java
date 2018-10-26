@@ -14,6 +14,7 @@ public class SubstituicaoRestApplication {
 		SpringApplication.run(SubstituicaoRestApplication.class, args);
 	}
 	
+	/*
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -22,5 +23,5 @@ public class SubstituicaoRestApplication {
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 		return dataSource;
-	}
+	}*/
 }
