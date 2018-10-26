@@ -1,10 +1,7 @@
 package br.edu.ifgoiano.substituicao.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CampusRepository extends CrudRepository<CampusRepository, Long>{
+import br.edu.ifgoiano.substituicao.model.Campus;
 
-	
-	
-	
-}
+public interface CampusRepository extends JpaRepository<Campus, Long>{}
