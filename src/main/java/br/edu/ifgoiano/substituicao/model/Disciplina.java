@@ -1,26 +1,16 @@
 package br.edu.ifgoiano.substituicao.model;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
-import org.hibernate.annotations.NaturalIdCache;
 
 @Entity
 @Table(name = "disciplina")
-@NaturalIdCache
-@Cache(usage = CacheConcurrencyStrategy.READ_WRITE)
 public class Disciplina {
 
 	@Id
@@ -32,21 +22,10 @@ public class Disciplina {
 	@Column(name = "cargahoraria")
 	private BigDecimal cargaHoraria;
 
-	@OneToMany(mappedBy = "disciplina", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<MatrizDisciplina> matrizes = new ArrayList<>();
-
 	public Disciplina(Long id, String nome, BigDecimal cargaHoraria) {
 		this.id = id;
 		this.nome = nome;
 		this.cargaHoraria = cargaHoraria;
-	}
-
-	public List<MatrizDisciplina> getMatrizes() {
-		return matrizes;
-	}
-
-	public void setMatrizes(List<MatrizDisciplina> matrizes) {
-		this.matrizes = matrizes;
 	}
 
 	public Long getId() {
