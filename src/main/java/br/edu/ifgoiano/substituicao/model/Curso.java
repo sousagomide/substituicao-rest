@@ -16,17 +16,18 @@ import br.edu.ifgoiano.substituicao.model.enumeration.ModalidadeCurso;
 @Entity
 @Table(name = "curso")
 public class Curso {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String nome;
-	
+
 	@Enumerated(EnumType.STRING)
 	private ModalidadeCurso modalidade;
-	
-	@ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idcampus")
+
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idcampus")
 	private Campus idCampus;
 
 	public Curso(Long id, String nome, ModalidadeCurso modalidade, Campus idCampus) {
