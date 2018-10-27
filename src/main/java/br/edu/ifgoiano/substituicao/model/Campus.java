@@ -13,7 +13,9 @@ public class Campus{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	
 	private String instituicao;
+	
 	private String nome;
 
 	public Long getId() {
