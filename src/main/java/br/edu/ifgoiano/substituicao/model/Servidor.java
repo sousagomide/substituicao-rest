@@ -100,7 +100,7 @@ public class Servidor {
 	public void setIdAutenticacao(Autenticacao idAutenticacao) {
 		this.idAutenticacao = idAutenticacao;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
