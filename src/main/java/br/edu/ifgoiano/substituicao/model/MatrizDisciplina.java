@@ -2,44 +2,36 @@ package br.edu.ifgoiano.substituicao.model;
 
 import java.io.Serializable;
 
-import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.MapsId;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "matriz_disciplina")
-public class MatrizDisciplina implements Serializable{
+public class MatrizDisciplina implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
-	@EmbeddedId
-	private MatrizDisciplinaId matrizDisciplinaId;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("idMatriz")
-	@JoinColumn(name = "idmatriz")
-    private Matriz matriz;
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-    @MapsId("idDisciplina")
-	@JoinColumn(name = "iddisciplina")
-    private Disciplina disciplina;
 
-	public MatrizDisciplina(Matriz matriz, Disciplina disciplina) {
-		this.matriz = matriz;
-		this.disciplina = disciplina;
-		this.matrizDisciplinaId = new MatrizDisciplinaId(matriz.getId(), disciplina.getId());
+	@ManyToOne
+	@JoinColumn(name = "idmatriz", nullable = false)
+	private Matriz idMatriz;
+
+	@ManyToOne
+	@JoinColumn(name = "iddisciplina", nullable = false)
+	private Disciplina idDisciplina;
+
+	public MatrizDisciplina(Long id, Matriz idMatriz, Disciplina idDisciplina) {
+		this.id = id;
+		this.idMatriz = idMatriz;
+		this.idDisciplina = idDisciplina;
 	}
 
 	public Long getId() {
@@ -50,28 +42,20 @@ public class MatrizDisciplina implements Serializable{
 		this.id = id;
 	}
 
-	public MatrizDisciplinaId getMatrizDisciplinaId() {
-		return matrizDisciplinaId;
+	public Matriz getIdMatriz() {
+		return idMatriz;
 	}
 
-	public void setMatrizDisciplinaId(MatrizDisciplinaId matrizDisciplinaId) {
-		this.matrizDisciplinaId = matrizDisciplinaId;
+	public void setIdMatriz(Matriz idMatriz) {
+		this.idMatriz = idMatriz;
 	}
 
-	public Matriz getMatriz() {
-		return matriz;
+	public Disciplina getIdDisciplina() {
+		return idDisciplina;
 	}
 
-	public void setMatriz(Matriz matriz) {
-		this.matriz = matriz;
-	}
-
-	public Disciplina getDisciplina() {
-		return disciplina;
-	}
-
-	public void setDisciplina(Disciplina disciplina) {
-		this.disciplina = disciplina;
+	public void setIdDisciplina(Disciplina idDisciplina) {
+		this.idDisciplina = idDisciplina;
 	}
 
 	@Override
