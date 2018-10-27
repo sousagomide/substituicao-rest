@@ -1,9 +1,5 @@
 package br.edu.ifgoiano.substituicao.model;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -11,7 +7,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -32,32 +27,11 @@ public class Matriz {
 	@JoinColumn(name = "idcurso")
 	private Curso idCurso;
 
-	@OneToMany(mappedBy = "matriz", cascade = CascadeType.ALL, orphanRemoval = true)
-	private List<MatrizDisciplina> disciplinas = new ArrayList<>();
-
 	public Matriz(Long id, Integer ano, Turma idTurma, Curso idCurso) {
 		this.id = id;
 		this.ano = ano;
 		this.idTurma = idTurma;
 		this.idCurso = idCurso;
-	}
-
-	public void addDisciplina(Disciplina disciplina) {
-		MatrizDisciplina matrizDisciplina = new MatrizDisciplina(this, disciplina);
-		disciplinas.add(matrizDisciplina);
-		disciplina.getMatrizes().add(matrizDisciplina);
-	}
-
-	public void removeTag(Disciplina disciplina) {
-		for(Iterator<MatrizDisciplina> iterator = disciplinas.iterator(); iterator.hasNext();) {
-			MatrizDisciplina matrizDisciplina = iterator.next();
-			if(matrizDisciplina.getMatriz().equals(this) && matrizDisciplina.getDisciplina().equals(disciplina)) {
-				iterator.remove();
-				matrizDisciplina.getDisciplina().getMatrizes().remove(matrizDisciplina);
-				matrizDisciplina.setMatriz(null);
-				matrizDisciplina.setDisciplina(null);
-			}
-		}
 	}
 
 	public Long getId() {
