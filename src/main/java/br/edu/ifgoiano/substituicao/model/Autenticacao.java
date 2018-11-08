@@ -24,6 +24,9 @@ public class Autenticacao {
 	@ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idperfil")
 	private Perfil idPerfil;
 
+	// Construtor padrão exigido pelo Hibernate.
+	public Autenticacao() {};
+	
 	public Autenticacao(Long id, String usuario, String senha, Perfil idPerfil) {
 		this.id = id;
 		this.usuario = usuario;
