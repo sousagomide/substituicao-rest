@@ -6,8 +6,6 @@ import java.util.List;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -17,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
-import br.edu.ifgoiano.substituicao.event.RecursoCriadoEvent;
 import br.edu.ifgoiano.substituicao.model.Campus;
 import br.edu.ifgoiano.substituicao.repository.CampusRepository;
 
@@ -28,9 +25,6 @@ public class CampusResource {
 	@Autowired
 	private CampusRepository repository;
 	
-	@Autowired
-	private ApplicationEventPublisher publisher;
-	
 	@GetMapping
 	public List<Campus> listar(){
 		return repository.findAll();
@@ -40,9 +34,10 @@ public class CampusResource {
 	public ResponseEntity<Campus> registrar(@RequestBody Campus campus, HttpServletResponse response){
 		Campus registro = repository.save(campus);
 		//Cria e adiciona um Location no HttpServletResponse. Usado quando um novo recurso é criado
-		publisher.publishEvent(new RecursoCriadoEvent(this, response, registro.getId()));
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequestUri().path("/{id}").buildAndExpand(registro.getId()).toUri();
+		response.setHeader("Location", uri.toASCIIString());
 		//Retorna o Campus registrado
-		return ResponseEntity.status(HttpStatus.CREATED).body(registro);
+		return ResponseEntity.created(uri).body(registro);
 	}
 	
 	@GetMapping("/{id}")
