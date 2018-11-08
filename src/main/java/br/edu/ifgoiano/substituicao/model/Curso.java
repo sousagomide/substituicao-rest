@@ -30,6 +30,9 @@ public class Curso {
 	@JoinColumn(name = "idcampus")
 	private Campus idCampus;
 
+	// Construtor padrão exigido pelo Hibernate
+	public Curso() {}
+	
 	public Curso(Long id, String nome, ModalidadeCurso modalidade, Campus idCampus) {
 		this.id = id;
 		this.nome = nome;
