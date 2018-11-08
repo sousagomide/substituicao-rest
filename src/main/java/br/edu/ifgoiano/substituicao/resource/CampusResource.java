@@ -1,6 +1,7 @@
 package br.edu.ifgoiano.substituicao.resource;
 
 import java.util.List;
+import java.util.Optional;
 
 import javax.servlet.http.HttpServletResponse;
 
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
@@ -56,5 +58,15 @@ public class CampusResource {
 		repository.deleteById(id);
 	}
 	
+	
+	@PutMapping("/{id}")
+	public ResponseEntity<Campus> atualizar(@RequestBody Campus campus, @PathVariable Long id) {
+		Optional<Campus> campusOptional = repository.findById(id);
+		if (!campusOptional.isPresent())
+			return ResponseEntity.notFound().build();
+		campus.setId(id);
+		repository.save(campus);
+		return ResponseEntity.noContent().build();
+	}
 	
 }
