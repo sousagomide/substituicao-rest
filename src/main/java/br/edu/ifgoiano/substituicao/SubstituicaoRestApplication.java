@@ -10,4 +10,14 @@ public class SubstituicaoRestApplication {
 		SpringApplication.run(SubstituicaoRestApplication.class, args);
 	}
 	
+	/*
+	@Bean
+	public DataSource dataSource() {
+		DriverManagerDataSource dataSource = new DriverManagerDataSource();
+		dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
+		dataSource.setUrl("jdbc:mysql://localhost/dbsubstituicao?useTimezone=true&serverTimezone=UTC&useSSL=false");
+		dataSource.setUsername("root");
+		dataSource.setPassword("root");
+		return dataSource;
+	}*/
 }
