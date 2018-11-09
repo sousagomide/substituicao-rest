@@ -41,9 +41,7 @@ public class CampusResource {
 	@PostMapping
 	public ResponseEntity<Campus> registrar(@RequestBody Campus campus, HttpServletResponse response){
 		Campus registro = repository.save(campus);
-		//Cria e adiciona um Location no HttpServletResponse. Usado quando um novo recurso é criado
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, registro.getId()));
-		//Retorna o Campus registrado
 		return ResponseEntity.status(HttpStatus.CREATED).body(registro);
 	}
 	
