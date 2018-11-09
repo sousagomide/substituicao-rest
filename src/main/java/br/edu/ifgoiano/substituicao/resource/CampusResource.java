@@ -22,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 import br.edu.ifgoiano.substituicao.event.RecursoCriadoEvent;
 import br.edu.ifgoiano.substituicao.model.Campus;
 import br.edu.ifgoiano.substituicao.repository.CampusRepository;
+import br.edu.ifgoiano.substituicao.repository.filter.CampusFilter;
 
 @RestController
 @RequestMapping("/campus")
@@ -34,8 +35,8 @@ public class CampusResource {
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	public List<Campus> listar(){
-		return repository.findAll();
+	public List<Campus> listar(CampusFilter campusFilter){
+		return repository.listar(campusFilter);
 	}
 	
 	@PostMapping
