@@ -47,9 +47,13 @@ public class CampusResource {
 		return ResponseEntity.status(HttpStatus.CREATED).body(registro);
 	}
 	
+	// Método modificado para evitar o erro NoSuchElementException ao se buscar por um id não existente
 	@GetMapping("/{id}")
-	public Campus listarId(@PathVariable Long id) {
-		return repository.findById(id).get();
+	public ResponseEntity<Campus> listarId(@PathVariable Long id) {
+		Optional<Campus> response = repository.findById(id);
+		if (!response.isPresent())
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok().body(response.get());
 	}
 	
 	@DeleteMapping("/{id}")
