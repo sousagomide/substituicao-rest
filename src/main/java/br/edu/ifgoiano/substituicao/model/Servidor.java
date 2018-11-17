@@ -35,6 +35,9 @@ public class Servidor {
 	@ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idautenticacao")
 	private Autenticacao idAutenticacao;
 
+	// Construtor padrão exigido pelo Hibernate
+	public Servidor() {}
+	
 	public Servidor(Long id, String nome, String siape, CategoriaServidor categoria, String funcao, String email, Autenticacao idAutenticacao) {
 		this.id = id;
 		this.nome = nome;
