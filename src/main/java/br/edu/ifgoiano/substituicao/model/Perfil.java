@@ -16,6 +16,9 @@ public class Perfil {
 	
 	private String descricao;
 
+	// Construtor padrão exigido pelo Hibernate
+	public Perfil() {}
+	
 	public Perfil(Long id, String descricao) {
 		this.id = id;
 		this.descricao = descricao;
