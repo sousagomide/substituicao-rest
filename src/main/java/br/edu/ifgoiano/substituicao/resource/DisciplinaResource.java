@@ -48,8 +48,11 @@ public class DisciplinaResource {
 	}
 
 	@GetMapping("/{id}")
-	public Disciplina listarId(@PathVariable Long id) {
-		return repository.findById(id).get();
+	public ResponseEntity<Disciplina> listarId(@PathVariable Long id) {
+		Optional<Disciplina> response = repository.findById(id);
+		if (!response.isPresent())
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok().body(response.get());
 	}
 
 	@DeleteMapping("/{id}")
