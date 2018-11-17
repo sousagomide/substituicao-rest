@@ -48,8 +48,11 @@ public class AutenticacaoResource {
 	}
 	
 	@GetMapping("/{id}")
-	public Autenticacao listarId(@PathVariable Long id) {
-		return repository.findById(id).get();
+	public ResponseEntity<Autenticacao> listarId(@PathVariable Long id) {
+		Optional<Autenticacao> response = repository.findById(id);
+		if (!response.isPresent())
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok().body(response.get());
 	}
 	
 	@DeleteMapping("/{id}")
