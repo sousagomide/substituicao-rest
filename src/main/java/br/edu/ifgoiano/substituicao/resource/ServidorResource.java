@@ -48,8 +48,11 @@ public class ServidorResource {
 	}
 	
 	@GetMapping("/{id}")
-	public Servidor listarId(@PathVariable Long id) {
-		return repository.findById(id).get();
+	public ResponseEntity<Servidor> listarId(@PathVariable Long id) {
+		Optional<Servidor> response = repository.findById(id);
+		if (!response.isPresent())
+			return ResponseEntity.notFound().build();
+		return ResponseEntity.ok().body(response.get());
 	}
 	
 	@DeleteMapping("/{id}")
