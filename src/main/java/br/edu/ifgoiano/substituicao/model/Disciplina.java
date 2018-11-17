@@ -22,6 +22,9 @@ public class Disciplina {
 	@Column(name = "cargahoraria")
 	private BigDecimal cargaHoraria;
 
+	// Construtor padrão exigido pelo Hibernate
+	public Disciplina() {}
+	
 	public Disciplina(Long id, String nome, BigDecimal cargaHoraria) {
 		this.id = id;
 		this.nome = nome;
