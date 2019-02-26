@@ -21,16 +21,19 @@ public class Autenticacao {
 	
 	private String senha;
 	
+	private boolean ativo;
+	
 	@ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idperfil")
 	private Perfil idPerfil;
 
 	// Construtor padrão exigido pelo Hibernate.
 	public Autenticacao() {};
 	
-	public Autenticacao(Long id, String usuario, String senha, Perfil idPerfil) {
+	public Autenticacao(Long id, String usuario, String senha, boolean ativo, Perfil idPerfil) {
 		this.id = id;
 		this.usuario = usuario;
 		this.senha = senha;
+		this.ativo = ativo;
 		this.idPerfil = idPerfil;
 	}
 
@@ -58,6 +61,14 @@ public class Autenticacao {
 		this.senha = senha;
 	}
 
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	public Perfil getIdPerfil() {
 		return idPerfil;
 	}

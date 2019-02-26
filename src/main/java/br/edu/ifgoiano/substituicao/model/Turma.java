@@ -19,6 +19,8 @@ public class Turma {
 
 	private Integer ano;
 
+	private boolean ativo;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idcurso")
 	private Curso idCurso;
@@ -45,6 +47,14 @@ public class Turma {
 		this.ano = ano;
 	}
 
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	public Curso getIdCurso() {
 		return idCurso;
 	}

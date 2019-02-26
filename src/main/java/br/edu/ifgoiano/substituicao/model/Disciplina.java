@@ -19,6 +19,8 @@ public class Disciplina {
 
 	private String nome;
 
+	private boolean ativo;
+	
 	@Column(name = "cargahoraria")
 	private BigDecimal cargaHoraria;
 
@@ -47,6 +49,14 @@ public class Disciplina {
 		this.nome = nome;
 	}
 
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	public BigDecimal getCargaHoraria() {
 		return cargaHoraria;
 	}

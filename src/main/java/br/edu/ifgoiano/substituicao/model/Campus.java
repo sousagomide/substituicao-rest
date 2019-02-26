@@ -18,6 +18,8 @@ public class Campus{
 	
 	private String nome;
 
+	private boolean ativo;
+	
 	public Long getId() {
 		return id;
 	}
@@ -42,6 +44,14 @@ public class Campus{
 		this.nome = nome;
 	}
 
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;

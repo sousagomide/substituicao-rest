@@ -23,6 +23,8 @@ public class Curso {
 
 	private String nome;
 
+	private boolean ativo;
+	
 	@Enumerated(EnumType.STRING)
 	private ModalidadeCurso modalidade;
 
@@ -56,6 +58,14 @@ public class Curso {
 		this.nome = nome;
 	}
 
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	public ModalidadeCurso getModalidade() {
 		return modalidade;
 	}

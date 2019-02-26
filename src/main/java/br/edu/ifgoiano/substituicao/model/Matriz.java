@@ -19,6 +19,8 @@ public class Matriz {
 
 	private Integer ano;
 
+	private boolean ativo;
+	
 	@ManyToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "idturma")
 	private Turma idTurma;
@@ -50,6 +52,14 @@ public class Matriz {
 		this.ano = ano;
 	}
 
+	public boolean getAtivo() {
+		return ativo;
+	}
+	
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+	
 	public Turma getIdTurma() {
 		return idTurma;
 	}
