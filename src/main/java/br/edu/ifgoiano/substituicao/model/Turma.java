@@ -1,6 +1,5 @@
 package br.edu.ifgoiano.substituicao.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -21,14 +20,16 @@ public class Turma {
 
 	private boolean ativo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idcurso")
-	private Curso idCurso;
+	private Curso curso;
 
-	public Turma(Long id, Integer ano, Curso idCurso) {
+	public Turma() {}
+	
+	public Turma(Long id, Integer ano, Curso curso) {
 		this.id = id;
 		this.ano = ano;
-		this.idCurso = idCurso;
+		this.curso = curso;
 	}
 
 	public Long getId() {
@@ -56,11 +57,11 @@ public class Turma {
 	}
 	
 	public Curso getIdCurso() {
-		return idCurso;
+		return curso;
 	}
 
-	public void setIdCurso(Curso idCurso) {
-		this.idCurso = idCurso;
+	public void setIdCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	@Override

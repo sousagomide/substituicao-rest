@@ -22,36 +22,36 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.ifgoiano.substituicao.event.RecursoCriadoEvent;
-import br.edu.ifgoiano.substituicao.model.Autenticacao;
-import br.edu.ifgoiano.substituicao.repository.AutenticacaoRepository;
-import br.edu.ifgoiano.substituicao.repository.filter.AutenticacaoFilter;
+import br.edu.ifgoiano.substituicao.model.Turma;
+import br.edu.ifgoiano.substituicao.repository.TurmaRepository;
+import br.edu.ifgoiano.substituicao.repository.filter.TurmaFilter;
 
 @RestController
-@RequestMapping("/autenticacoes")
+@RequestMapping("/turmas")
 @PreAuthorize("hasAuthority('GENERIC_ROLE')")
-public class AutenticacaoResource {
+public class TurmaResource {
 
 	@Autowired
-	private AutenticacaoRepository repository;
+	private TurmaRepository repository;
 	
 	@Autowired
 	private ApplicationEventPublisher publisher;
 	
 	@GetMapping
-	public Page<Autenticacao> listar(AutenticacaoFilter autenticacaoFilter, Pageable pageable) {
-		return repository.listar(autenticacaoFilter, pageable);
+	public Page<Turma> listar(TurmaFilter turmaFilter, Pageable pageable) {
+		return repository.listar(turmaFilter, pageable);
 	}
 	
 	@PostMapping
-	public ResponseEntity<Autenticacao> registrar(@RequestBody Autenticacao curso, HttpServletResponse response) {
-		Autenticacao registro = repository.save(curso);
+	public ResponseEntity<Turma> registrar(@RequestBody Turma curso, HttpServletResponse response) {
+		Turma registro = repository.save(curso);
 		publisher.publishEvent(new RecursoCriadoEvent(this, response, registro.getId()));
 		return ResponseEntity.status(HttpStatus.CREATED).body(registro);
 	}
 	
 	@GetMapping("/{id}")
-	public ResponseEntity<Autenticacao> listarId(@PathVariable Long id) {
-		Optional<Autenticacao> response = repository.findById(id);
+	public ResponseEntity<Turma> listarId(@PathVariable Long id) {
+		Optional<Turma> response = repository.findById(id);
 		if (!response.isPresent())
 			return ResponseEntity.notFound().build();
 		return ResponseEntity.ok().body(response.get());
@@ -64,12 +64,12 @@ public class AutenticacaoResource {
 	}
 	
 	@PutMapping("/{id}")
-	public ResponseEntity<Autenticacao> atualizar(@RequestBody Autenticacao autenticacao, @PathVariable Long id) {
-		Optional<Autenticacao> autenticacaoOptional = repository.findById(id);
-		if (!autenticacaoOptional.isPresent())
+	public ResponseEntity<Turma> atualizar(@RequestBody Turma turma, @PathVariable Long id) {
+		Optional<Turma> turmaOptional = repository.findById(id);
+		if (!turmaOptional.isPresent())
 			return ResponseEntity.notFound().build();
-		autenticacao.setId(id);
-		repository.save(autenticacao);
+		turma.setId(id);
+		repository.save(turma);
 		return ResponseEntity.noContent().build();
 	}
 	

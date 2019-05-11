@@ -1,6 +1,5 @@
 package br.edu.ifgoiano.substituicao.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,18 +22,18 @@ public class Autenticacao {
 	
 	private boolean ativo;
 	
-	@ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idperfil")
-	private Perfil idPerfil;
+	@ManyToOne
+	@JoinColumn(name = "idperfil", nullable=false)
+	private Perfil perfil;
 
-	// Construtor padrão exigido pelo Hibernate.
 	public Autenticacao() {};
 	
-	public Autenticacao(Long id, String usuario, String senha, boolean ativo, Perfil idPerfil) {
+	public Autenticacao(Long id, String usuario, String senha, boolean ativo, Perfil perfil) {
 		this.id = id;
 		this.usuario = usuario;
 		this.senha = senha;
 		this.ativo = ativo;
-		this.idPerfil = idPerfil;
+		this.perfil = perfil;
 	}
 
 	public Long getId() {
@@ -70,11 +69,11 @@ public class Autenticacao {
 	}
 	
 	public Perfil getIdPerfil() {
-		return idPerfil;
+		return perfil;
 	}
 
-	public void setIdPerfil(Perfil idPerfil) {
-		this.idPerfil = idPerfil;
+	public void setIdPerfil(Perfil perfil) {
+		this.perfil = perfil;
 	}
 
 	@Override

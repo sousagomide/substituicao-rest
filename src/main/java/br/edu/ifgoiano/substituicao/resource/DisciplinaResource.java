@@ -28,7 +28,7 @@ import br.edu.ifgoiano.substituicao.repository.filter.DisciplinaFilter;
 
 @RestController
 @RequestMapping("/disciplinas")
-//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('GENERIC_ROLE')")
 public class DisciplinaResource {
 
 	@Autowired

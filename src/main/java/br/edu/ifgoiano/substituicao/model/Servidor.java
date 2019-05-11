@@ -1,6 +1,5 @@
 package br.edu.ifgoiano.substituicao.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -32,20 +31,20 @@ public class Servidor {
 	
 	private String email;
 	
-	@ManyToOne(cascade = CascadeType.ALL) @JoinColumn(name = "idautenticacao")
-	private Autenticacao idAutenticacao;
+	@ManyToOne
+	@JoinColumn(name = "idautenticacao")
+	private Autenticacao autenticacao;
 
-	// Construtor padrão exigido pelo Hibernate
 	public Servidor() {}
 	
-	public Servidor(Long id, String nome, String siape, CategoriaServidor categoria, String funcao, String email, Autenticacao idAutenticacao) {
+	public Servidor(Long id, String nome, String siape, CategoriaServidor categoria, String funcao, String email, Autenticacao autenticacao) {
 		this.id = id;
 		this.nome = nome;
 		this.siape = siape;
 		this.categoria = categoria;
 		this.funcao = funcao;
 		this.email = email;
-		this.idAutenticacao = idAutenticacao;
+		this.autenticacao = autenticacao;
 	}
 
 	public Long getId() {
@@ -97,11 +96,11 @@ public class Servidor {
 	}
 
 	public Autenticacao getIdAutenticacao() {
-		return idAutenticacao;
+		return autenticacao;
 	}
 
-	public void setIdAutenticacao(Autenticacao idAutenticacao) {
-		this.idAutenticacao = idAutenticacao;
+	public void setIdAutenticacao(Autenticacao autenticacao) {
+		this.autenticacao = autenticacao;
 	}
 	
 	@Override

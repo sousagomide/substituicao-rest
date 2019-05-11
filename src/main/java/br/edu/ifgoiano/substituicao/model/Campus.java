@@ -8,18 +8,29 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "campus")
-public class Campus{
+public class Campus {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	private String instituicao;
-	
+
 	private String nome;
 
 	private boolean ativo;
 	
+	public Campus() {
+		this.ativo = true;
+	}
+
+	public Campus(Long id, String nome, String instituicao) {
+		this.id = id;
+		this.nome = nome;
+		this.instituicao = instituicao;
+		this.ativo = true;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -47,11 +58,11 @@ public class Campus{
 	public boolean getAtivo() {
 		return ativo;
 	}
-	
+
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
 	}
-	
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -76,7 +87,5 @@ public class Campus{
 			return false;
 		return true;
 	}
-	
-	
 
 }

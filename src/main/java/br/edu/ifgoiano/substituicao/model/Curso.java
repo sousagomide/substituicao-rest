@@ -1,6 +1,5 @@
 package br.edu.ifgoiano.substituicao.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -28,18 +27,18 @@ public class Curso {
 	@Enumerated(EnumType.STRING)
 	private ModalidadeCurso modalidade;
 
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "idcampus")
-	private Campus idCampus;
-
-	// Construtor padrão exigido pelo Hibernate
-	public Curso() {}
+	@ManyToOne
+	@JoinColumn(name = "idcampus", nullable = false)
+	private Campus campus;
 	
-	public Curso(Long id, String nome, ModalidadeCurso modalidade, Campus idCampus) {
+	public Curso() { this.ativo = true; }
+	
+	public Curso(Long id, String nome, ModalidadeCurso modalidade, Campus campus) {
 		this.id = id;
 		this.nome = nome;
 		this.modalidade = modalidade;
-		this.idCampus = idCampus;
+		this.campus = campus;
+		this.ativo = true;
 	}
 
 	public Long getId() {
@@ -74,12 +73,12 @@ public class Curso {
 		this.modalidade = modalidade;
 	}
 
-	public Campus getIdCampus() {
-		return idCampus;
+	public Campus getCampus() {
+		return campus;
 	}
 
-	public void setIdCampus(Campus idCampus) {
-		this.idCampus = idCampus;
+	public void setCampus(Campus campus) {
+		this.campus = campus;
 	}
 
 	@Override

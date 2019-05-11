@@ -28,7 +28,7 @@ import br.edu.ifgoiano.substituicao.repository.filter.CampusFilter;
 
 @RestController
 @RequestMapping("/campus")
-//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('GENERIC_ROLE')")
 public class CampusResource {
 	
 	@Autowired

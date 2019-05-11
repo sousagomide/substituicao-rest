@@ -14,7 +14,7 @@ import br.edu.ifgoiano.substituicao.repository.filter.PerfilFilter;
 
 @RestController
 @RequestMapping("/perfis")
-//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('GENERIC_ROLE')")
 public class PerfilResource {
 
 	@Autowired

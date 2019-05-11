@@ -21,19 +21,19 @@ public class Matriz {
 
 	private boolean ativo;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idturma")
-	private Turma idTurma;
+	private Turma turma;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idcurso")
-	private Curso idCurso;
+	private Curso curso;
 
-	public Matriz(Long id, Integer ano, Turma idTurma, Curso idCurso) {
+	public Matriz(Long id, Integer ano, Turma turma, Curso curso) {
 		this.id = id;
 		this.ano = ano;
-		this.idTurma = idTurma;
-		this.idCurso = idCurso;
+		this.turma = turma;
+		this.curso = curso;
 	}
 
 	public Long getId() {
@@ -61,19 +61,19 @@ public class Matriz {
 	}
 	
 	public Turma getIdTurma() {
-		return idTurma;
+		return turma;
 	}
 
-	public void setIdTurma(Turma idTurma) {
-		this.idTurma = idTurma;
+	public void setIdTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public Curso getIdCurso() {
-		return idCurso;
+		return curso;
 	}
 
-	public void setIdCurso(Curso idCurso) {
-		this.idCurso = idCurso;
+	public void setIdCurso(Curso curso) {
+		this.curso = curso;
 	}
 
 	@Override

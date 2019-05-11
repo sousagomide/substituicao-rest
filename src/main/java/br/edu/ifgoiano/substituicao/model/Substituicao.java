@@ -3,7 +3,6 @@ package br.edu.ifgoiano.substituicao.model;
 import java.io.Serializable;
 import java.util.Calendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -41,21 +40,21 @@ public class Substituicao implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar horarioReposicao;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idturma")
-	private Turma idTurma;
+	private Turma turma;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idfichasubstituicao")
-	private FichaSubstituicao idFichaSubstituicao;
+	private FichaSubstituicao fichaSubstituicao;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idsubstituto")
-	private Servidor idSubstituto;
+	private Servidor substituto;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "iddisciplinasolicitante")
-	private QuadroDocente idDisciplinaSolicitante;
+	private QuadroDocente disciplinaSolicitante;
 
 	public Substituicao() {
 	}
@@ -101,35 +100,35 @@ public class Substituicao implements Serializable {
 	}
 
 	public Turma getIdTurma() {
-		return idTurma;
+		return turma;
 	}
 
-	public void setIdTurma(Turma idTurma) {
-		this.idTurma = idTurma;
+	public void setIdTurma(Turma turma) {
+		this.turma = turma;
 	}
 
 	public FichaSubstituicao getIdFichaSubstituicao() {
-		return idFichaSubstituicao;
+		return fichaSubstituicao;
 	}
 
-	public void setIdFichaSubstituicao(FichaSubstituicao idFichaSubstituicao) {
-		this.idFichaSubstituicao = idFichaSubstituicao;
+	public void setIdFichaSubstituicao(FichaSubstituicao fichaSubstituicao) {
+		this.fichaSubstituicao = fichaSubstituicao;
 	}
 
 	public Servidor getIdSubstituto() {
-		return idSubstituto;
+		return substituto;
 	}
 
-	public void setIdSubstituto(Servidor idSubstituto) {
-		this.idSubstituto = idSubstituto;
+	public void setIdSubstituto(Servidor substituto) {
+		this.substituto = substituto;
 	}
 
 	public QuadroDocente getIdDisciplinaSolicitante() {
-		return idDisciplinaSolicitante;
+		return disciplinaSolicitante;
 	}
 
-	public void setIdDisciplinaSolicitante(QuadroDocente idDisciplinaSolicitante) {
-		this.idDisciplinaSolicitante = idDisciplinaSolicitante;
+	public void setIdDisciplinaSolicitante(QuadroDocente disciplinaSolicitante) {
+		this.disciplinaSolicitante = disciplinaSolicitante;
 	}
 
 	@Override

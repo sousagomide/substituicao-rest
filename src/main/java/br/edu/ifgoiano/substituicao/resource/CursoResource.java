@@ -28,7 +28,7 @@ import br.edu.ifgoiano.substituicao.repository.filter.CursoFilter;
 
 @RestController
 @RequestMapping("/cursos")
-//@PreAuthorize("hasAuthority('ROLE_ADMIN')")
+@PreAuthorize("hasAuthority('GENERIC_ROLE')")
 public class CursoResource {
 	
 	@Autowired

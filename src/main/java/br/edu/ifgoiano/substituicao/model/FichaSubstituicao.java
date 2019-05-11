@@ -2,7 +2,6 @@ package br.edu.ifgoiano.substituicao.model;
 
 import java.util.Calendar;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
@@ -35,9 +34,9 @@ public class FichaSubstituicao {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Calendar dataParecer;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne
 	@JoinColumn(name = "idservidor")
-	private Servidor idServidor;
+	private Servidor servidor;
 
 	public FichaSubstituicao(Long id, String justificativa, StatusFichaSubstituicao status, Calendar dataParecer) {
 		this.id = id;
@@ -79,11 +78,11 @@ public class FichaSubstituicao {
 	}
 
 	public Servidor getIdServidor() {
-		return idServidor;
+		return servidor;
 	}
 
-	public void setIdServidor(Servidor idServidor) {
-		this.idServidor = idServidor;
+	public void setIdServidor(Servidor servidor) {
+		this.servidor = servidor;
 	}
 
 	@Override

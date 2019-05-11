@@ -19,18 +19,18 @@ public class Disciplina {
 
 	private String nome;
 
-	private boolean ativo;
+	private Boolean ativo;
 	
 	@Column(name = "cargahoraria")
 	private BigDecimal cargaHoraria;
 
-	// Construtor padrão exigido pelo Hibernate
-	public Disciplina() {}
+	public Disciplina() { this.ativo = true; }
 	
 	public Disciplina(Long id, String nome, BigDecimal cargaHoraria) {
 		this.id = id;
 		this.nome = nome;
 		this.cargaHoraria = cargaHoraria;
+		this.ativo = true;
 	}
 
 	public Long getId() {

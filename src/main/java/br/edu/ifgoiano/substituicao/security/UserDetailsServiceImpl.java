@@ -35,7 +35,11 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 
 	private Collection<? extends GrantedAuthority> getPermissoes(Autenticacao autenticacao) {
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
-		authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN")); // TODO: adaptar
+		
+		// As ROLES adicionadas devem estar dentro da autenticacao, ex:
+		// ROLE_USER, ROLE_ADMIN, ROLE_GUEST
+		authorities.add(new SimpleGrantedAuthority("GENERIC_ROLE"));
+		
 		return authorities;
 	}
 
