@@ -22,16 +22,18 @@ public class MatrizDisciplina implements Serializable {
 
 	@ManyToOne
 	@JoinColumn(name = "idmatriz", nullable = false)
-	private Matriz idMatriz;
+	private Matriz matriz;
 
 	@ManyToOne
 	@JoinColumn(name = "iddisciplina", nullable = false)
-	private Disciplina idDisciplina;
+	private Disciplina disciplina;
 
-	public MatrizDisciplina(Long id, Matriz idMatriz, Disciplina idDisciplina) {
+	public MatrizDisciplina() {}
+	
+	public MatrizDisciplina(Long id, Matriz matriz, Disciplina disciplina) {
 		this.id = id;
-		this.idMatriz = idMatriz;
-		this.idDisciplina = idDisciplina;
+		this.matriz = matriz;
+		this.disciplina = disciplina;
 	}
 
 	public Long getId() {
@@ -42,20 +44,20 @@ public class MatrizDisciplina implements Serializable {
 		this.id = id;
 	}
 
-	public Matriz getIdMatriz() {
-		return idMatriz;
+	public Matriz getMatriz() {
+		return matriz;
 	}
 
-	public void setIdMatriz(Matriz idMatriz) {
-		this.idMatriz = idMatriz;
+	public void setMatriz(Matriz matriz) {
+		this.matriz = matriz;
 	}
 
-	public Disciplina getIdDisciplina() {
-		return idDisciplina;
+	public Disciplina getDisciplina() {
+		return disciplina;
 	}
 
-	public void setIdDisciplina(Disciplina idDisciplina) {
-		this.idDisciplina = idDisciplina;
+	public void setDisciplina(Disciplina disciplina) {
+		this.disciplina = disciplina;
 	}
 
 	@Override

@@ -59,7 +59,10 @@ public class TurmaRepositoryImpl implements TurmaRepositoryQuery {
 		if (!StringUtils.isEmpty(turmaFilter.getNome()))
 			predicates.add(builder.like(builder.lower(root.get("nome")), turmaFilter.getNome() + "%"));
 		if (!StringUtils.isEmpty(turmaFilter.getCurso()))
-			predicates.add(builder.like(builder.lower(root.get("curso")), turmaFilter.getCurso() + "%"));
+			predicates.add(
+					builder.like(builder.lower(root.get("curso")), turmaFilter.getCurso().getId().toString() + "%"));
+		if (!StringUtils.isEmpty(turmaFilter.getAtivo()))
+			predicates.add(builder.like(builder.lower(root.get("ativo")), turmaFilter.getAtivo().toString()));
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 }

@@ -61,6 +61,8 @@ public class CampusRepositoryImpl implements CampusRepositoryQuery{
 			predicates.add(builder.like(builder.lower(root.get("instituicao")), campusFilter.getInstituicao() + "%"));
 		if(!StringUtils.isEmpty(campusFilter.getNome()))
 			predicates.add(builder.like(builder.lower(root.get("nome")), campusFilter.getNome() + "%"));
+		if(!StringUtils.isEmpty(campusFilter.getAtivo()))
+			predicates.add(builder.like(builder.lower(root.get("ativo")), campusFilter.getAtivo().toString()));
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 

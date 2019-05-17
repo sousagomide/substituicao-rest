@@ -6,6 +6,7 @@ public class TurmaFilter {
 
 	private String nome;
 	private Curso curso;
+	private Boolean ativo;
 
 	public String getNome() {
 		return nome;
@@ -21,6 +22,14 @@ public class TurmaFilter {
 
 	public void setCurso(Curso curso) {
 		this.curso = curso;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

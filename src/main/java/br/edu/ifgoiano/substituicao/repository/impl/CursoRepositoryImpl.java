@@ -60,9 +60,11 @@ public class CursoRepositoryImpl implements CursoRepositoryQuery {
 			predicates.add(builder.like(builder.lower(root.get("instituicao")), cursoFilter.getNome() + "%"));
 		if (!StringUtils.isEmpty(cursoFilter.getModalidade()))
 			predicates.add(builder.like(builder.lower(root.get("modalidade")), cursoFilter.getModalidade().toString()));
-		if (!StringUtils.isEmpty(cursoFilter.getIdCampus()))
-			predicates.add(builder.like(builder.lower(root.get("idCampus")),
-					cursoFilter.getIdCampus().getId().toString() + "%"));
+		if (!StringUtils.isEmpty(cursoFilter.getCampus()))
+			predicates.add(
+					builder.like(builder.lower(root.get("campus")), cursoFilter.getCampus().getId().toString() + "%"));
+		if (!StringUtils.isEmpty(cursoFilter.getAtivo()))
+			predicates.add(builder.like(builder.lower(root.get("ativo")), cursoFilter.getAtivo().toString()));
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 }

@@ -6,6 +6,7 @@ public class DisciplinaFilter {
 
 	private String nome;
 	private BigDecimal cargaHoraria;
+	private Boolean ativo;
 
 	public String getNome() {
 		return nome;
@@ -21,6 +22,14 @@ public class DisciplinaFilter {
 
 	public void setCargaHoraria(BigDecimal cargaHoraria) {
 		this.cargaHoraria = cargaHoraria;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

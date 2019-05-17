@@ -7,7 +7,8 @@ public class CursoFilter {
 
 	private String nome;
 	private ModalidadeCurso modalidade;
-	private Campus idCampus;
+	private Campus campus;
+	private Boolean ativo;
 
 	public String getNome() {
 		return nome;
@@ -25,12 +26,20 @@ public class CursoFilter {
 		this.modalidade = modalidade;
 	}
 
-	public Campus getIdCampus() {
-		return idCampus;
+	public Campus getCampus() {
+		return campus;
 	}
 
-	public void setIdCampus(Campus idCampus) {
-		this.idCampus = idCampus;
+	public void setCampus(Campus campus) {
+		this.campus = campus;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

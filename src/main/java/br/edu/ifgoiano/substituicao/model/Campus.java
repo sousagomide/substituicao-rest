@@ -1,9 +1,13 @@
 package br.edu.ifgoiano.substituicao.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,7 +22,10 @@ public class Campus {
 
 	private String nome;
 
-	private boolean ativo;
+	private Boolean ativo;
+	
+	@OneToMany(mappedBy="campus", cascade=CascadeType.REMOVE)
+	private List<Curso> cursos;
 	
 	public Campus() {
 		this.ativo = true;
@@ -55,11 +62,11 @@ public class Campus {
 		this.nome = nome;
 	}
 
-	public boolean getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 
-	public void setAtivo(boolean ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 

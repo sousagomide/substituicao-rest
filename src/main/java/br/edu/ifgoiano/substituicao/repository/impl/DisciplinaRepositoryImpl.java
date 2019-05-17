@@ -61,7 +61,12 @@ public class DisciplinaRepositoryImpl implements DisciplinaRepositoryQuery {
 		if (!StringUtils.isEmpty(disciplinaFilter.getNome()))
 			predicates.add(builder.like(builder.lower(root.get("nome")), disciplinaFilter.getNome() + "%"));
 		if (!StringUtils.isEmpty(disciplinaFilter.getCargaHoraria()))
-			predicates.add(builder.like(builder.lower(root.get("cargaHoraria")), disciplinaFilter.getCargaHoraria() + "%"));
+			predicates.add(
+					builder.like(builder.lower(root.get("cargaHoraria")), disciplinaFilter.getCargaHoraria() + "%"));
+		if (!StringUtils.isEmpty(disciplinaFilter.getAtivo()))
+			predicates.add(
+					builder.like(builder.lower(root.get("ativo")), disciplinaFilter.getAtivo().toString()));
+
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 

@@ -4,6 +4,7 @@ public class CampusFilter {
 
 	private String nome;
 	private String instituicao;
+	private Boolean ativo;
 
 	public String getNome() {
 		return nome;
@@ -19,6 +20,14 @@ public class CampusFilter {
 
 	public void setInstituicao(String instituicao) {
 		this.instituicao = instituicao;
+	}
+
+	public Boolean getAtivo() {
+		return ativo;
+	}
+
+	public void setAtivo(Boolean ativo) {
+		this.ativo = ativo;
 	}
 
 }

@@ -1,11 +1,15 @@
 package br.edu.ifgoiano.substituicao.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -18,18 +22,24 @@ public class Turma {
 
 	private Integer ano;
 
-	private boolean ativo;
+	private Boolean ativo;
 	
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.REMOVE)
 	@JoinColumn(name = "idcurso")
 	private Curso curso;
 
-	public Turma() {}
+	@OneToMany(mappedBy="turma", cascade=CascadeType.REMOVE)
+	private List<Matriz> matrizes;
+	
+	public Turma() {
+		this.ativo = true;
+	}
 	
 	public Turma(Long id, Integer ano, Curso curso) {
 		this.id = id;
 		this.ano = ano;
 		this.curso = curso;
+		this.ativo = true;
 	}
 
 	public Long getId() {
@@ -52,15 +62,15 @@ public class Turma {
 		return ativo;
 	}
 	
-	public void setAtivo(boolean ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 	
-	public Curso getIdCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setIdCurso(Curso curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 

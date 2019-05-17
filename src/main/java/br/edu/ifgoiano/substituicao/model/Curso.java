@@ -1,5 +1,8 @@
 package br.edu.ifgoiano.substituicao.model;
 
+import java.util.List;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -8,6 +11,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import br.edu.ifgoiano.substituicao.model.enumeration.ModalidadeCurso;
@@ -22,7 +26,7 @@ public class Curso {
 
 	private String nome;
 
-	private boolean ativo;
+	private Boolean ativo;
 	
 	@Enumerated(EnumType.STRING)
 	private ModalidadeCurso modalidade;
@@ -30,6 +34,12 @@ public class Curso {
 	@ManyToOne
 	@JoinColumn(name = "idcampus", nullable = false)
 	private Campus campus;
+	
+	@OneToMany(mappedBy="curso", cascade=CascadeType.REMOVE)
+	private List<Turma> turmas;
+	
+	@OneToMany(mappedBy="curso", cascade=CascadeType.REMOVE)
+	private List<Matriz> matrizes;
 	
 	public Curso() { this.ativo = true; }
 	
@@ -57,11 +67,11 @@ public class Curso {
 		this.nome = nome;
 	}
 
-	public boolean getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 	
-	public void setAtivo(boolean ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 	

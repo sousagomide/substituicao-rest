@@ -1,12 +1,15 @@
 package br.edu.ifgoiano.substituicao.model;
 
 import java.math.BigDecimal;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
@@ -24,6 +27,9 @@ public class Disciplina {
 	@Column(name = "cargahoraria")
 	private BigDecimal cargaHoraria;
 
+	@OneToMany(mappedBy="disciplina", cascade=CascadeType.REMOVE)
+	private List<MatrizDisciplina> matrizesDisciplinas;
+	
 	public Disciplina() { this.ativo = true; }
 	
 	public Disciplina(Long id, String nome, BigDecimal cargaHoraria) {

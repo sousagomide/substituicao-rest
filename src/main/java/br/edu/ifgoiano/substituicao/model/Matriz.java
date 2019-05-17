@@ -1,6 +1,5 @@
 package br.edu.ifgoiano.substituicao.model;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -19,7 +18,7 @@ public class Matriz {
 
 	private Integer ano;
 
-	private boolean ativo;
+	private Boolean ativo;
 	
 	@ManyToOne
 	@JoinColumn(name = "idturma")
@@ -29,11 +28,16 @@ public class Matriz {
 	@JoinColumn(name = "idcurso")
 	private Curso curso;
 
+	public Matriz() {
+		this.ativo = true;
+	}
+	
 	public Matriz(Long id, Integer ano, Turma turma, Curso curso) {
 		this.id = id;
 		this.ano = ano;
 		this.turma = turma;
 		this.curso = curso;
+		this.ativo = true;
 	}
 
 	public Long getId() {
@@ -52,27 +56,27 @@ public class Matriz {
 		this.ano = ano;
 	}
 
-	public boolean getAtivo() {
+	public Boolean getAtivo() {
 		return ativo;
 	}
 	
-	public void setAtivo(boolean ativo) {
+	public void setAtivo(Boolean ativo) {
 		this.ativo = ativo;
 	}
 	
-	public Turma getIdTurma() {
+	public Turma getTurma() {
 		return turma;
 	}
 
-	public void setIdTurma(Turma turma) {
+	public void setTurma(Turma turma) {
 		this.turma = turma;
 	}
 
-	public Curso getIdCurso() {
+	public Curso getCurso() {
 		return curso;
 	}
 
-	public void setIdCurso(Curso curso) {
+	public void setCurso(Curso curso) {
 		this.curso = curso;
 	}
 
