@@ -6,24 +6,18 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.edu.ifgoiano.substituicao.model.abs.BaseModel;
 import br.edu.ifgoiano.substituicao.model.enumeration.StatusFichaSubstituicao;
 
 @Entity
 @Table(name = "fichasubstituicao")
-public class FichaSubstituicao {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class FichaSubstituicao extends BaseModel {
 
 	private String justificativa;
 
@@ -38,19 +32,13 @@ public class FichaSubstituicao {
 	@JoinColumn(name = "idservidor")
 	private Servidor servidor;
 
+	public FichaSubstituicao() { }
+	
 	public FichaSubstituicao(Long id, String justificativa, StatusFichaSubstituicao status, Calendar dataParecer) {
 		this.id = id;
 		this.justificativa = justificativa;
 		this.status = status;
 		this.dataParecer = dataParecer;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getJustificativa() {
@@ -77,37 +65,12 @@ public class FichaSubstituicao {
 		this.dataParecer = dataParecer;
 	}
 
-	public Servidor getIdServidor() {
+	public Servidor getServidor() {
 		return servidor;
 	}
 
-	public void setIdServidor(Servidor servidor) {
+	public void setServidor(Servidor servidor) {
 		this.servidor = servidor;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		FichaSubstituicao other = (FichaSubstituicao) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
 	}
 
 }

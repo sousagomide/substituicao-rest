@@ -17,12 +17,10 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Matriz;
-import br.edu.ifgoiano.substituicao.model.Matriz;
 import br.edu.ifgoiano.substituicao.repository.filter.MatrizFilter;
-import br.edu.ifgoiano.substituicao.repository.filter.MatrizFilter;
-import br.edu.ifgoiano.substituicao.repository.query.MatrizRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class MatrizRepositoryImpl implements MatrizRepositoryQuery {
+public class MatrizRepositoryImpl implements RepositoryQuery<Matriz, MatrizFilter> {
 
 	@PersistenceContext
 	private EntityManager manager;

@@ -2,8 +2,9 @@ package br.edu.ifgoiano.substituicao.repository.filter;
 
 import br.edu.ifgoiano.substituicao.model.Disciplina;
 import br.edu.ifgoiano.substituicao.model.Matriz;
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
 
-public class MatrizDisciplinaFilter {
+public class MatrizDisciplinaFilter extends BaseFilter {
 
 	private Matriz matriz;
 	private Disciplina disciplina;

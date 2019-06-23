@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Curso;
 import br.edu.ifgoiano.substituicao.repository.filter.CursoFilter;
-import br.edu.ifgoiano.substituicao.repository.query.CursoRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class CursoRepositoryImpl implements CursoRepositoryQuery {
+public class CursoRepositoryImpl implements RepositoryQuery<Curso, CursoFilter> {
 	@PersistenceContext
 	private EntityManager manager;
 
@@ -57,7 +57,7 @@ public class CursoRepositoryImpl implements CursoRepositoryQuery {
 	private Predicate[] criarRestricoes(CursoFilter cursoFilter, CriteriaBuilder builder, Root<Curso> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		if (!StringUtils.isEmpty(cursoFilter.getNome()))
-			predicates.add(builder.like(builder.lower(root.get("instituicao")), cursoFilter.getNome() + "%"));
+			predicates.add(builder.like(builder.lower(root.get("nome")), cursoFilter.getNome() + "%"));
 		if (!StringUtils.isEmpty(cursoFilter.getModalidade()))
 			predicates.add(builder.like(builder.lower(root.get("modalidade")), cursoFilter.getModalidade().toString()));
 		if (!StringUtils.isEmpty(cursoFilter.getCampus()))

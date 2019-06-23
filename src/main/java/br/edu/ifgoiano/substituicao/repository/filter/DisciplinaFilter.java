@@ -2,7 +2,9 @@ package br.edu.ifgoiano.substituicao.repository.filter;
 
 import java.math.BigDecimal;
 
-public class DisciplinaFilter {
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
+
+public class DisciplinaFilter extends BaseFilter {
 
 	private String nome;
 	private BigDecimal cargaHoraria;

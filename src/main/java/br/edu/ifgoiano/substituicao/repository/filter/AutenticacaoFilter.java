@@ -1,8 +1,9 @@
 package br.edu.ifgoiano.substituicao.repository.filter;
 
 import br.edu.ifgoiano.substituicao.model.Perfil;
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
 
-public class AutenticacaoFilter {
+public class AutenticacaoFilter extends BaseFilter {
 
 	private String usuario;
 	private String senha;

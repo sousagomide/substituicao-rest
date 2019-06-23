@@ -5,24 +5,19 @@ import java.util.Calendar;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import br.edu.ifgoiano.substituicao.model.abs.BaseModel;
+
 @Entity
 @Table(name = "substituicao")
-public class Substituicao implements Serializable {
+public class Substituicao extends BaseModel implements Serializable {
 
 	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
 
 	@Column(name = "datasubstituicao")
 	@Temporal(TemporalType.TIMESTAMP)
@@ -56,17 +51,8 @@ public class Substituicao implements Serializable {
 	@JoinColumn(name = "iddisciplinasolicitante")
 	private QuadroDocente disciplinaSolicitante;
 
-	public Substituicao() {
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
+	public Substituicao() { }
+	
 	public Calendar getDataSubstituicao() {
 		return dataSubstituicao;
 	}
@@ -131,28 +117,36 @@ public class Substituicao implements Serializable {
 		this.disciplinaSolicitante = disciplinaSolicitante;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public Turma getTurma() {
+		return turma;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Substituicao other = (Substituicao) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setTurma(Turma turma) {
+		this.turma = turma;
 	}
+
+	public FichaSubstituicao getFichaSubstituicao() {
+		return fichaSubstituicao;
+	}
+
+	public void setFichaSubstituicao(FichaSubstituicao fichaSubstituicao) {
+		this.fichaSubstituicao = fichaSubstituicao;
+	}
+
+	public Servidor getSubstituto() {
+		return substituto;
+	}
+
+	public void setSubstituto(Servidor substituto) {
+		this.substituto = substituto;
+	}
+
+	public QuadroDocente getDisciplinaSolicitante() {
+		return disciplinaSolicitante;
+	}
+
+	public void setDisciplinaSolicitante(QuadroDocente disciplinaSolicitante) {
+		this.disciplinaSolicitante = disciplinaSolicitante;
+	}
+
 }

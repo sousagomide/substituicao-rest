@@ -1,4 +1,4 @@
-package br.edu.ifgoiano.substituicao.token;
+package br.edu.ifgoiano.substituicao.security.oauth.token;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -28,31 +28,30 @@ public class RefreshTokenPostProcessor implements ResponseBodyAdvice<OAuth2Acces
 	public OAuth2AccessToken beforeBodyWrite(OAuth2AccessToken body, MethodParameter returnType,
 			MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType,
 			ServerHttpRequest request, ServerHttpResponse response) {
-		
+
 		HttpServletRequest servletRequest = ((ServletServerHttpRequest) request).getServletRequest();
 		HttpServletResponse servletResponse = ((ServletServerHttpResponse) response).getServletResponse();
-		
+
 		DefaultOAuth2AccessToken token = (DefaultOAuth2AccessToken) body;
-		
+
 		String refreshToken = body.getRefreshToken().getValue();
 		adicionarRefreshTokenCookie(refreshToken, servletRequest, servletResponse);
 		removerRefreshToken(token);
-		
+
 		return body;
 	}
 
 	private void removerRefreshToken(DefaultOAuth2AccessToken token) {
 		token.setRefreshToken(null);
-		
+
 	}
 
 	private void adicionarRefreshTokenCookie(String refreshToken, HttpServletRequest servletRequest,
 			HttpServletResponse servletResponse) {
 		Cookie refreshTokenCookie = new Cookie("refreshToken", refreshToken);
 		refreshTokenCookie.setHttpOnly(true);
-		refreshTokenCookie.setSecure(false); // TODO: true em produção
 		refreshTokenCookie.setPath(servletRequest.getContextPath() + "/oauth/token");
-		refreshTokenCookie.setMaxAge(2592000);
+		refreshTokenCookie.setMaxAge(-1);
 		servletResponse.addCookie(refreshTokenCookie);
 	}
 

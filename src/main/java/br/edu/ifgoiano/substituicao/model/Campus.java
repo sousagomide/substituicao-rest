@@ -4,29 +4,27 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import br.edu.ifgoiano.substituicao.model.abs.BaseModel;
+
 @Entity
 @Table(name = "campus")
-public class Campus {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long id;
+public class Campus extends BaseModel {
 
 	private String instituicao;
 
 	private String nome;
 
 	private Boolean ativo;
-	
-	@OneToMany(mappedBy="campus", cascade=CascadeType.REMOVE)
+
+	@OneToMany(mappedBy = "campus", cascade = CascadeType.REMOVE)
+	@JsonIgnore
 	private List<Curso> cursos;
-	
+
 	public Campus() {
 		this.ativo = true;
 	}
@@ -36,14 +34,6 @@ public class Campus {
 		this.nome = nome;
 		this.instituicao = instituicao;
 		this.ativo = true;
-	}
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
 	}
 
 	public String getInstituicao() {
@@ -70,29 +60,12 @@ public class Campus {
 		this.ativo = ativo;
 	}
 
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+	public List<Curso> getCursos() {
+		return cursos;
 	}
 
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		Campus other = (Campus) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+	public void setCursos(List<Curso> cursos) {
+		this.cursos = cursos;
 	}
 
 }

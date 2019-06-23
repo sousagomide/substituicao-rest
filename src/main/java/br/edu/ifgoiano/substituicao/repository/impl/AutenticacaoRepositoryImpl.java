@@ -18,13 +18,13 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Autenticacao;
 import br.edu.ifgoiano.substituicao.repository.filter.AutenticacaoFilter;
-import br.edu.ifgoiano.substituicao.repository.query.AutenticacaoRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class AutenticacaoRepositoryImpl implements AutenticacaoRepositoryQuery {
+public class AutenticacaoRepositoryImpl implements RepositoryQuery<Autenticacao, AutenticacaoFilter> {
 
 	@PersistenceContext
 	private EntityManager manager;
-
+	
 	@Override
 	public Page<Autenticacao> listar(AutenticacaoFilter autenticacaoFilter, Pageable pageable) {
 		CriteriaBuilder builder = manager.getCriteriaBuilder();

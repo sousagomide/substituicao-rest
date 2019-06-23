@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Turma;
 import br.edu.ifgoiano.substituicao.repository.filter.TurmaFilter;
-import br.edu.ifgoiano.substituicao.repository.query.TurmaRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class TurmaRepositoryImpl implements TurmaRepositoryQuery {
+public class TurmaRepositoryImpl implements RepositoryQuery<Turma, TurmaFilter> {
 	@PersistenceContext
 	private EntityManager manager;
 

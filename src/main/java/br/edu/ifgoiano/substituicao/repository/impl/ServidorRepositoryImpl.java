@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Servidor;
 import br.edu.ifgoiano.substituicao.repository.filter.ServidorFilter;
-import br.edu.ifgoiano.substituicao.repository.query.ServidorRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class ServidorRepositoryImpl implements ServidorRepositoryQuery {
+public class ServidorRepositoryImpl implements RepositoryQuery<Servidor, ServidorFilter> {
 	@PersistenceContext
 	private EntityManager manager;
 

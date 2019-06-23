@@ -2,8 +2,9 @@ package br.edu.ifgoiano.substituicao.repository.filter;
 
 import br.edu.ifgoiano.substituicao.model.Autenticacao;
 import br.edu.ifgoiano.substituicao.model.enumeration.CategoriaServidor;
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
 
-public class ServidorFilter {
+public class ServidorFilter extends BaseFilter {
 
 	private String nome;
 	private String siape;

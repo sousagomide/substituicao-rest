@@ -2,8 +2,9 @@ package br.edu.ifgoiano.substituicao.repository.filter;
 
 import br.edu.ifgoiano.substituicao.model.Curso;
 import br.edu.ifgoiano.substituicao.model.Turma;
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
 
-public class MatrizFilter {
+public class MatrizFilter extends BaseFilter {
 
 	private Integer ano;
 	private Boolean ativo;

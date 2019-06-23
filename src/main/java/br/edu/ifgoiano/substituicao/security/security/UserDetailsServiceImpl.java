@@ -1,4 +1,4 @@
-package br.edu.ifgoiano.substituicao.security;
+package br.edu.ifgoiano.substituicao.security.security;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -6,9 +6,6 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Primary;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -36,10 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 	private Collection<? extends GrantedAuthority> getPermissoes(Autenticacao autenticacao) {
 		Set<SimpleGrantedAuthority> authorities = new HashSet<>();
 		
-		// As ROLES adicionadas devem estar dentro da autenticacao, ex:
-		// ROLE_USER, ROLE_ADMIN, ROLE_GUEST
 		authorities.add(new SimpleGrantedAuthority("GENERIC_ROLE"));
-		
 		return authorities;
 	}
 

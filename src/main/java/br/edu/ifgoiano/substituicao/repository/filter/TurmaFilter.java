@@ -1,8 +1,9 @@
 package br.edu.ifgoiano.substituicao.repository.filter;
 
 import br.edu.ifgoiano.substituicao.model.Curso;
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
 
-public class TurmaFilter {
+public class TurmaFilter extends BaseFilter {
 
 	private String nome;
 	private Curso curso;

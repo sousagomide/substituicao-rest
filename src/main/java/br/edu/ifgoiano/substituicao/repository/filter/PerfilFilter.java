@@ -1,6 +1,8 @@
 package br.edu.ifgoiano.substituicao.repository.filter;
 
-public class PerfilFilter {
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
+
+public class PerfilFilter extends BaseFilter {
 
 	private String descricao;
 
@@ -11,5 +13,5 @@ public class PerfilFilter {
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
+
 }

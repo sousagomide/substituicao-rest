@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Disciplina;
 import br.edu.ifgoiano.substituicao.repository.filter.DisciplinaFilter;
-import br.edu.ifgoiano.substituicao.repository.query.DisciplinaRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class DisciplinaRepositoryImpl implements DisciplinaRepositoryQuery {
+public class DisciplinaRepositoryImpl implements RepositoryQuery<Disciplina, DisciplinaFilter> {
 
 	@PersistenceContext
 	private EntityManager manager;

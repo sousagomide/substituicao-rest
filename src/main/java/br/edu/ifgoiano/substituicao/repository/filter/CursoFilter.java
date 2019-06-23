@@ -2,8 +2,9 @@ package br.edu.ifgoiano.substituicao.repository.filter;
 
 import br.edu.ifgoiano.substituicao.model.Campus;
 import br.edu.ifgoiano.substituicao.model.enumeration.ModalidadeCurso;
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
 
-public class CursoFilter {
+public class CursoFilter extends BaseFilter {
 
 	private String nome;
 	private ModalidadeCurso modalidade;

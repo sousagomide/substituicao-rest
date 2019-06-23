@@ -10,5 +10,4 @@ public class SubstituicaoRestApplication {
 		SpringApplication.run(SubstituicaoRestApplication.class, args);
 	}
 	
-	
 }

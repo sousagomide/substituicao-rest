@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.MatrizDisciplina;
 import br.edu.ifgoiano.substituicao.repository.filter.MatrizDisciplinaFilter;
-import br.edu.ifgoiano.substituicao.repository.query.MatrizDisciplinaRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class MatrizDisciplinaRepositoryImpl implements MatrizDisciplinaRepositoryQuery {
+public class MatrizDisciplinaRepositoryImpl implements RepositoryQuery<MatrizDisciplina, MatrizDisciplinaFilter> {
 
 	@PersistenceContext
 	private EntityManager manager;
@@ -60,7 +60,7 @@ public class MatrizDisciplinaRepositoryImpl implements MatrizDisciplinaRepositor
 		if (!StringUtils.isEmpty(matrizDisciplinaFilter.getDisciplina()))
 			predicates.add(builder.like(builder.lower(root.get("disciplina")), matrizDisciplinaFilter.getDisciplina() + "%"));
 		if (!StringUtils.isEmpty(matrizDisciplinaFilter.getMatriz()))
-			predicates.add(builder.like(builder.lower(root.get("matriz")), matrizDisciplinaFilter.getMatriz().getId().toString() + "%"));
+			predicates.add(builder.like(builder.lower(root.get("matriz")), matrizDisciplinaFilter.getMatriz().getId().toString()));
 		return predicates.toArray(new Predicate[predicates.size()]);
 	}
 

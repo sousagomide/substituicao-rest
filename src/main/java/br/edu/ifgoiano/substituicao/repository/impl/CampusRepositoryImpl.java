@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Campus;
 import br.edu.ifgoiano.substituicao.repository.filter.CampusFilter;
-import br.edu.ifgoiano.substituicao.repository.query.CampusRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class CampusRepositoryImpl implements CampusRepositoryQuery{
+public class CampusRepositoryImpl implements RepositoryQuery<Campus, CampusFilter> {
 	
 	@PersistenceContext
 	private EntityManager manager;

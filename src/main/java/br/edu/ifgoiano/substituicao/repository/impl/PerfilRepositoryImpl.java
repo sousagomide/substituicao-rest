@@ -18,9 +18,9 @@ import org.springframework.util.StringUtils;
 
 import br.edu.ifgoiano.substituicao.model.Perfil;
 import br.edu.ifgoiano.substituicao.repository.filter.PerfilFilter;
-import br.edu.ifgoiano.substituicao.repository.query.PerfilRepositoryQuery;
+import br.edu.ifgoiano.substituicao.repository.query.RepositoryQuery;
 
-public class PerfilRepositoryImpl implements PerfilRepositoryQuery {
+public class PerfilRepositoryImpl implements RepositoryQuery<Perfil, PerfilFilter> {
 	@PersistenceContext
 	private EntityManager manager;
 
@@ -54,8 +54,7 @@ public class PerfilRepositoryImpl implements PerfilRepositoryQuery {
 		query.setMaxResults(totalRegistrosPorPagina);
 	}
 
-	private Predicate[] criarRestricoes(PerfilFilter perfilFilter, CriteriaBuilder builder,
-			Root<Perfil> root) {
+	private Predicate[] criarRestricoes(PerfilFilter perfilFilter, CriteriaBuilder builder, Root<Perfil> root) {
 		List<Predicate> predicates = new ArrayList<>();
 		if (!StringUtils.isEmpty(perfilFilter.getDescricao()))
 			predicates.add(builder.like(builder.lower(root.get("descricao")), perfilFilter.getDescricao() + "%"));

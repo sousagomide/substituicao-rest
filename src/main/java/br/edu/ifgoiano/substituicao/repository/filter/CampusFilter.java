@@ -1,6 +1,8 @@
 package br.edu.ifgoiano.substituicao.repository.filter;
 
-public class CampusFilter {
+import br.edu.ifgoiano.substituicao.repository.filter.abs.BaseFilter;
+
+public class CampusFilter extends BaseFilter {
 
 	private String nome;
 	private String instituicao;

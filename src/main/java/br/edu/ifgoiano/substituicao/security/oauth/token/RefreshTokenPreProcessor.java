@@ -1,4 +1,4 @@
-package br.edu.ifgoiano.substituicao.token;
+package br.edu.ifgoiano.substituicao.security.oauth.token;
 
 import java.io.IOException;
 import java.util.Map;
@@ -50,7 +50,6 @@ public class RefreshTokenPreProcessor implements Filter {
 	public void destroy() {}
 	
 	static class MyServletRequestWrapper extends HttpServletRequestWrapper {
-
 		private String refreshToken;
 		
 		public MyServletRequestWrapper(HttpServletRequest request, String refreshToken) {
@@ -65,7 +64,6 @@ public class RefreshTokenPreProcessor implements Filter {
 			map.setLocked(true);
 			return map;
 		}
-		
 	}
 	
 }
